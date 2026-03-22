@@ -1,0 +1,77 @@
+name: "Meditation User Story"
+description: "Comprehensive form for all app features (Exercises 2 to 9)"
+title: "[STORY]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 🖋️ New User Story
+        Please complete this form to document features from the meditation app curriculum.
+
+  - type: dropdown
+    id: feature-area
+    attributes:
+      label: "Feature Area (Exercise)"
+      description: "Which section of the app does this story belong to?"
+      options:
+        - "Login / Registration (Ex 2)"
+        - "Homepage (Ex 3)"
+        - "Exercise Detail Screen (Ex 4)"
+        - "Favorites Functionality (Ex 5)"
+        - "Daily Reminders / Calendar (Ex 6)"
+        - "Exercise Sharing (Ex 7)"
+        - "Logout & Security (Ex 8)"
+        - "Settings & Themes (Ex 9)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: story-description
+    attributes:
+      label: "User Story Description"
+      description: "Format: As a [role], I want [action], so that [reason]."
+      placeholder: "e.g., As a user, I want to register with my email..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "What must be true for this story to be complete?"
+      placeholder: |
+        - Display 'Hello [username]' on the homepage.
+        - Show an error message for invalid credentials.
+        - Ensure data persists in local storage.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "Priority Level"
+      options:
+        - "priority: high"
+        - "priority: medium"
+        - "priority: low"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: technical-requirements
+    attributes:
+      label: "Technical Scope"
+      options:
+        - label: "Data Persistence (LocalStorage / Authentication)"
+        - label: "UI Assets (Images, Icons, Banner)"
+        - label: "Navigation (Routing, Back/Settings Icons)"
+        - label: "Interactive Elements (Calendar, Time Picker, Toggles)"
+        - label: "External APIs (Sharing, Social Media)"
+        - label: "Dynamic Styling (Dark/Light Mode)"
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: "Additional Notes"
+      placeholder: "Constraints like 'Session data must be cleared upon logout' or specific hex colors for the theme."
