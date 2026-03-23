@@ -22,7 +22,8 @@ import ScreenHeaderBtn from '../../components/ScreenHeaderBtn';
 import { COLORS, icons, SIZES } from "../../constants";
 import useFetch from "../../hook/useFetch";
 
-const tabs = ["À propos", "Instructions"];
+const tabs = ["About", "Instructions"];
+
 
 const MeditationDetails = () => {
   const params = useGlobalSearchParams();
