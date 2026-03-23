@@ -2,6 +2,7 @@ import React, { memo } from "react";
 import { View, Text } from "react-native";
 import styles from "./About.style";
 
+
 /**
  * Optimized About Component
  * Using React.memo to prevent re-renders when parent state changes
@@ -13,7 +14,8 @@ const About = memo(({ info, title = "this session" }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headText}>About {title}:</Text>
+      <Text style={styles.headText}>About {title}:
+      </Text>
 
       <View style={styles.contentBox}>
         <Text 
