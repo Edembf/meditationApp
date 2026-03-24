@@ -34,8 +34,6 @@ const Favourites = () => {
       setRefreshing(false);
     }
   };
-
-  // Optimized: useFocusEffect only triggers loading state on the very first mount
   useFocusEffect(
     useCallback(() => {
       loadFavorites(favorites.length === 0);

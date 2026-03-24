@@ -1,38 +1,91 @@
-import React from "react"; // 🚩 OPTIMISATION 1 : Toujours présent pour la cohérence
+import React, { useMemo } from "react"; // 1. Ajout de useMemo
 import { View, Text, StyleSheet } from "react-native";
 import { COLORS, FONT, SIZES } from "../constants/theme";
 
-const Welcome = ({ userDetails }) => {
-  // 🚩 OPTIMISATION 2 : Valeur de repli (fallback) si le nom est absent
-  const nameToShow = userDetails?.userName || "Guest";
+const Welcome = ({ userDetails, isDarkMode }) => {
+  
+
+  const dynamicStyles = useMemo(() => ({
+    userName: {
+      color: isDarkMode ? COLORS.lightWhite : COLORS.darkText,
+    },
+    welcomeMessage: {
+      color: isDarkMode ? COLORS.lightText : COLORS.darkText,
+    }
+  }), [isDarkMode]);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.userName}>Hello {nameToShow}!</Text>
-      <Text style={styles.welcomeMessage}>Find your perfect meditation</Text>
+    <View>
+      <Text style={{ 
+        fontSize: SIZES.xLarge,
+        fontFamily: "DMBold",
+        
+        color: isDarkMode ? COLORS.lightWhite : COLORS.primary 
+      }}>
+        Hello {userDetails?.userName}!
+      </Text>
+      <Text 
+        style={[
+          styles.welcomeMessage, 
+          { color: isDarkMode ? COLORS.lightWhite : COLORS.primary }
+        ]}
+      >
+        Find your perfect meditation
+      </Text>
     </View>
   );
 };
 
+export default Welcome;
+
 const styles = StyleSheet.create({
-  container: {
+ container: {
     width: "100%",
-    // 🚩 OPTIMISATION 3 : Ajout d'un padding optionnel pour l'alignement
-    paddingVertical: SIZES.small, 
+    padding: 10,
   },
   userName: {
     fontFamily: FONT.regular,
     fontSize: SIZES.large,
-    color: COLORS.secondary,
   },
   welcomeMessage: {
     fontFamily: FONT.bold,
     fontSize: SIZES.xLarge,
-    color: COLORS.primary,
     marginTop: 2,
   },
-  // 🚩 OPTIMISATION 4 : J'ai supprimé les styles de recherche (searchContainer, etc.) 
-  // s'ils ne sont pas utilisés dans ce composant spécifique pour alléger le bundle.
+  searchContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    marginTop: SIZES.large,
+    height: 50,
+  },
+  searchWrapper: {
+    flex: 1,
+    marginRight: SIZES.small,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: SIZES.medium,
+    height: "100%",
+  },
+  searchInput: {
+    fontFamily: FONT.regular,
+    width: "100%",
+    height: "100%",
+    paddingHorizontal: SIZES.medium,
+  },
+  searchBtn: {
+    width: 50,
+    height: "100%",
+    borderRadius: SIZES.medium,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  searchBtnImage: {
+    width: "50%",
+    height: "50%",
+  },
+  tabsContainer: {
+    width: "100%",
+    marginTop: SIZES.medium,
+  },
 });
-
-export default Welcome;
